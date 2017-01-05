@@ -1,12 +1,13 @@
 {
   "name": "parse-server-sqs-mq-adapter",
   "version": "1.0.0",
-  "description": "Enable AWS SQS to allow spreading workload accross a cluster",
+  "description": "Spread work queue accross cluster of parse servers using SQS",
   "main": "index.js",
   "scripts": {
     "lint": "eslint ./",
     "pretest": "npm run lint",
-    "test": "jasmine"
+    "test": "npm run freetest",
+    "freetest": "istanbul cover -x \"**/spec/**\" jasmine"
   },
   "author": "Arthur Cinader <acinader@gmail.com>",
   "license": "MIT",
@@ -23,6 +24,12 @@
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^2.2.3",
     "eslint-plugin-react": "^6.8.0",
-    "jasmine": "^2.5.2"
+    "istanbul": "^0.4.5",
+    "jasmine": "^2.5.2",
+    "sinon": "^1.17.7"
+  },
+  "repository": {
+    "type": "git",
+    "url": "github.com/parse-server-modules/parse-server-sqs-mq-adapter.git"
   }
 }
