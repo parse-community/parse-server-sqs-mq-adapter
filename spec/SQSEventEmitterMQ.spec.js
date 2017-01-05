@@ -2,6 +2,7 @@ const sinon = require('sinon');
 const MessageQueue = require(
   '../node_modules/parse-server/lib/ParseMessageQueue').ParseMessageQueue;
 const SQSEventEmitterMQ = require('../lib/SQSEventEmitterMQ').SQSEventEmitterMQ;
+const logger = require('parse-server').logger;
 
 let config;
 
@@ -25,7 +26,7 @@ describe('SMSEventEmitterMQ', () => {
     };
   });
 
-  xit('happy path should work', (done) => {
+  xit('a test for real that can be done against a live queue', (done) => {
     const CHANNEL = 'foo';
     const MESSAGE = 'hi';
 
@@ -59,8 +60,7 @@ describe('SMSEventEmitterMQ', () => {
         .toThrow(new Error('No SQSEventEmitterMQOptions found in config'));
     });
 
-    xit('should respond to an event', () => {
-      // ugh, how to do tis one....
+    it('should respond to an event', () => {
       const subscriber = MessageQueue.createSubscriber(config);
       subscriber.subscribe('foo');
     });
@@ -72,9 +72,21 @@ describe('SMSEventEmitterMQ', () => {
         .toThrow(new Error('No SQSEventEmitterMQOptions found in config'));
     });
 
-    xit('should handle happy path', () => {
+    it('should handle happy path', () => {
+      expect(() => MessageQueue.createPublisher(config)).not.toThrow();
+    });
+
+    it('should publish', () => {
       const publisher = MessageQueue.createPublisher(config);
-      publisher.emit('foo', 'hi');
+      publisher.publish('foo', 'bar');
+    });
+
+    it('should error', () => {
+      const publisher = MessageQueue.createPublisher(config);
+      spyOn(logger, 'error');
+      publisher.publish();
+      const expectedError = new Error('A message can either be an object or a string');
+      expect(logger.error).toHaveBeenCalledWith(expectedError);
     });
   });
 });
