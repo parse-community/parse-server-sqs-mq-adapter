@@ -51,7 +51,7 @@ describe('SMSEventEmitterMQ', () => {
     });
 
     publisher.publish(CHANNEL, MESSAGE);
-  }).pend('this test could be used to test against an actual queue');
+  }).pend('configure options for a real sqs endpoint');
 
   describe('subscriber', () => {
     it('should only have one subscription map', () => {
@@ -71,7 +71,7 @@ describe('SMSEventEmitterMQ', () => {
 
     it('should allow unsubscribe', () => {
       const subscriber = MessageQueue.createSubscriber(config);
-      subscriber.unsubscribe('foo');
+      expect(() => subscriber.unsubscribe('foo')).not.toThrow();
     });
 
     it('calls the handleMessage function when a message is received', (done) => {
@@ -97,7 +97,7 @@ describe('SMSEventEmitterMQ', () => {
 
     it('should publish', () => {
       const publisher = MessageQueue.createPublisher(config);
-      publisher.publish('foo', 'bar');
+      expect(() => publisher.publish('foo', 'bar')).not.toThrow();
     });
 
     it('should error', () => {
