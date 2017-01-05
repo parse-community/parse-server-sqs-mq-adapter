@@ -16,7 +16,7 @@
     "sqs-producer": "^1.5.0"
   },
   "peerDependencies": {
-    "parse-server": "^2.3.1"
+    "parse-server": "acinader/parse-server#built-push-scaling"
   },
   "devDependencies": {
     "eslint": "^3.12.2",
