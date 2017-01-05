@@ -4,7 +4,7 @@
   "description": "Spread work queue accross cluster of parse servers using SQS",
   "main": "index.js",
   "scripts": {
-    "lint": "eslint ./",
+    "lint": "eslint ./index.js ./lib/** ./spec/**",
     "pretest": "npm run lint",
     "test": "npm run freetest",
     "freetest": "istanbul cover -x \"**/spec/**\" jasmine"
