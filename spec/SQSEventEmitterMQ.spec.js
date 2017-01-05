@@ -8,6 +8,14 @@ let config;
 
 describe('SMSEventEmitterMQ', () => {
   beforeEach(() => {
+    const response = {
+      Messages: [{
+        ReceiptHandle: 'receipt-handle',
+        MessageId: '123',
+        Body: 'body',
+      }],
+    };
+
     const SQSEventEmitterMQOptions = {
       queueUrl: 'test-queue',
       region: 'mock',
@@ -15,8 +23,9 @@ describe('SMSEventEmitterMQ', () => {
 
     const sqs = sinon.mock();
     sqs.sendMessageBatch = sinon.stub();
-    sqs.receiveMessage = sinon.stub();
-    // sqs.receiveMessage.callsArg(1);
+    sqs.receiveMessage = sinon.stub().yieldsAsync(null, response);
+    sqs.receiveMessage.onSecondCall().returns();
+    sqs.deleteMessage = sinon.stub();
 
     SQSEventEmitterMQOptions.sqs = sqs;
 
@@ -60,9 +69,19 @@ describe('SMSEventEmitterMQ', () => {
         .toThrow(new Error('No SQSEventEmitterMQOptions found in config'));
     });
 
-    it('should respond to an event', () => {
+    it('should allow unsubscribe', () => {
       const subscriber = MessageQueue.createSubscriber(config);
-      subscriber.subscribe('foo');
+      subscriber.unsubscribe('foo');
+    });
+
+    it('calls the handleMessage function when a message is received', (done) => {
+      const subscriber = MessageQueue.createSubscriber(config);
+      subscriber.subscribe('message_processed');
+      subscriber.on('message', (event, message) => {
+        expect(event).toBe('message_processed');
+        expect(message).toBe('body');
+        done();
+      });
     });
   });
 
