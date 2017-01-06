@@ -1,7 +1,7 @@
 const sinon = require('sinon');
 const MessageQueue = require(
   '../node_modules/parse-server/lib/ParseMessageQueue').ParseMessageQueue;
-const SQSEventEmitterMQ = require('../lib/SQSEventEmitterMQ').SQSEventEmitterMQ;
+const SQSEventEmitterMQ = require('../').SQSEventEmitterMQ;
 const logger = require('parse-server').logger;
 
 let config;
@@ -104,8 +104,19 @@ describe('SMSEventEmitterMQ', () => {
       const publisher = MessageQueue.createPublisher(config);
       spyOn(logger, 'error');
       publisher.publish();
-      const expectedError = new Error('A message can either be an object or a string');
+      const expectedError = new Error("Object messages must have 'id' and 'body' props");
       expect(logger.error).toHaveBeenCalledWith(expectedError);
+    });
+
+    it('should process a batch', () => {
+      const publisher = MessageQueue.createPublisher(config);
+      spyOn(publisher.emitter, 'send');
+      publisher.publish('channel', ['foo', 'bar']);
+      const payload = [
+        { id: '0', body: 'foo' },
+        { id: '1', body: 'bar' },
+      ];
+      expect(publisher.emitter.send).toHaveBeenCalledWith(payload, jasmine.any(Function));
     });
   });
 });
