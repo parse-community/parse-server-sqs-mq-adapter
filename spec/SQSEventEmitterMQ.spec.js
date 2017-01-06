@@ -16,22 +16,17 @@ describe('SMSEventEmitterMQ', () => {
       }],
     };
 
-    const SQSEventEmitterMQOptions = {
-      queueUrl: 'test-queue',
-      region: 'mock',
-    };
-
     const sqs = sinon.mock();
     sqs.sendMessageBatch = sinon.stub();
     sqs.receiveMessage = sinon.stub().yieldsAsync(null, response);
     sqs.receiveMessage.onSecondCall().returns();
     sqs.deleteMessage = sinon.stub();
 
-    SQSEventEmitterMQOptions.sqs = sqs;
-
     config = {
       messageQueueAdapter: SQSEventEmitterMQ,
-      SQSEventEmitterMQOptions,
+      queueUrl: 'test-queue',
+      region: 'mock',
+      sqs,
     };
   });
 
@@ -66,7 +61,7 @@ describe('SMSEventEmitterMQ', () => {
 
     it('should throw if no config', () => {
       expect(() => MessageQueue.createSubscriber({ messageQueueAdapter: SQSEventEmitterMQ }))
-        .toThrow(new Error('No SQSEventEmitterMQOptions found in config'));
+        .toThrow(new Error('No queueUrl found in config'));
     });
 
     it('should allow unsubscribe', () => {
@@ -88,7 +83,7 @@ describe('SMSEventEmitterMQ', () => {
   describe('publisher', () => {
     it('should throw if no config', () => {
       expect(() => MessageQueue.createPublisher({ messageQueueAdapter: SQSEventEmitterMQ }))
-        .toThrow(new Error('No SQSEventEmitterMQOptions found in config'));
+        .toThrow(new Error('Missing SQS consumer option [queueUrl].'));
     });
 
     it('should handle happy path', () => {

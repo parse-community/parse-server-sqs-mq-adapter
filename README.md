@@ -13,12 +13,12 @@ AWS SQS backed message queue.  This adapter allows a work queue to be spread acr
 
 ```js
 const ParseServer = require('parse-server').ParseServer;
-const SQSEventEmitterMQ = require('SQSEventEmitterMQ');
+const SQSEventEmitterMQ = require('parse-server-sqs-mq-adapter').SQSEventEmitterMQ;
 
 config = {
   ....
-  messageQueueAdapter: SQSEventEmitterMQ,
-  SQSEventEmitterMQOptions: {
+  queueOptions: {
+    messageQueueAdapter: SQSEventEmitterMQ,
     queueUrl: 'https://sqs.us-east-1.amazonaws.com/XXX/Parse-Queue', // required
     region: 'us-east-1',
   },
