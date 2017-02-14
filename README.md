@@ -2,6 +2,7 @@
 [![codecov](https://codecov.io/gh/parse-server-modules/parse-server-sqs-mq-adapter/branch/master/graph/badge.svg)](https://codecov.io/gh/parse-server-modules/parse-server-sqs-mq-adapter)
 
 
+#NOTE THIS IS PRE-RELEASE SOFTWARE and should not be used in production environment.
 # parse-server-sqs-mq-adapter
 AWS SQS backed message queue.  This adapter allows a work queue to be spread across a cluster of machines.
 
