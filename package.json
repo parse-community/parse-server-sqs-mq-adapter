@@ -1,6 +1,6 @@
 {
   "name": "parse-server-sqs-mq-adapter",
-  "version": "1.0.0",
+  "version": "1.0.0-alpha",
   "description": "Spread work queue accross cluster of parse servers using SQS",
   "main": "index.js",
   "scripts": {
