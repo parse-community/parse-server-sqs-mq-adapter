@@ -30,6 +30,6 @@
   },
   "repository": {
     "type": "git",
-    "url": "github.com/parse-server-modules/parse-server-sqs-mq-adapter.git"
+    "url": "git+https://github.com/parse-server-modules/parse-server-sqs-mq-adapter.git"
   }
 }
