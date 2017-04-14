@@ -2,6 +2,8 @@
 [![codecov](https://codecov.io/gh/parse-server-modules/parse-server-sqs-mq-adapter/branch/master/graph/badge.svg)](https://codecov.io/gh/parse-server-modules/parse-server-sqs-mq-adapter)
 
 # parse-server-sqs-mq-adapter
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/parse-server-modules/parse-server-sqs-mq-adapter.svg)](https://greenkeeper.io/)
 AWS SQS backed message queue.  This adapter allows a work queue to be spread across a cluster of machines.
 
 ## Installation
