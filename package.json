@@ -20,13 +20,13 @@
   },
   "devDependencies": {
     "eslint": "^3.12.2",
-    "eslint-config-airbnb": "^13.0.0",
+    "eslint-config-airbnb": "^14.1.0",
     "eslint-plugin-import": "^2.2.0",
-    "eslint-plugin-jsx-a11y": "^2.2.3",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
     "eslint-plugin-react": "^6.8.0",
     "istanbul": "^0.4.5",
     "jasmine": "^2.5.2",
-    "sinon": "^1.17.7"
+    "sinon": "^2.1.0"
   },
   "repository": {
     "type": "git",
