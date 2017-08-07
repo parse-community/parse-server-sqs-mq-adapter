@@ -19,7 +19,7 @@
     "parse-server": "2.3.3"
   },
   "devDependencies": {
-    "eslint": "^3.12.2",
+    "eslint": "^4.4.1",
     "eslint-config-airbnb": "^14.1.0",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",
