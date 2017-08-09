@@ -12,21 +12,19 @@
   "author": "Arthur Cinader <acinader@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "sqs-consumer": "^3.4.0",
+    "sqs-consumer": "^3.6.0",
     "sqs-producer": "^1.5.0"
   },
   "peerDependencies": {
     "parse-server": "2.3.3"
   },
   "devDependencies": {
-    "eslint": "^3.12.2",
-    "eslint-config-airbnb": "^14.1.0",
-    "eslint-plugin-import": "^2.2.0",
-    "eslint-plugin-jsx-a11y": "^6.0.2",
-    "eslint-plugin-react": "^6.8.0",
+    "eslint": "^4.3.0",
+    "eslint-config-airbnb-base": "^11.3.1",
+    "eslint-plugin-import": "^2.7.0",
     "istanbul": "^0.4.5",
-    "jasmine": "^2.5.2",
-    "sinon": "^2.1.0"
+    "jasmine": "^2.7.0",
+    "sinon": "^3.1.0"
   },
   "repository": {
     "type": "git",
