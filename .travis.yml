@@ -1,7 +1,7 @@
 language: node_js
 sudo: false
 before_install:
-  - npm install jasmine parse-server@acinader/parse-server#built-push-scaling
+  - npm install jasmine parse-server
 node_js:
  # - "4.5"
   - "6"
