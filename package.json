@@ -23,7 +23,7 @@
     "eslint-config-airbnb": "^14.1.0",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",
-    "eslint-plugin-react": "^6.8.0",
+    "eslint-plugin-react": "^7.0.0",
     "istanbul": "^0.4.5",
     "jasmine": "^2.5.2",
     "sinon": "^3.0.0"
