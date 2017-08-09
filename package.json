@@ -1,6 +1,6 @@
 {
   "name": "parse-server-sqs-mq-adapter",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Spread work queue accross cluster of parse servers using SQS",
   "main": "index.js",
   "scripts": {
@@ -12,24 +12,22 @@
   "author": "Arthur Cinader <acinader@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "sqs-consumer": "^3.4.0",
+    "sqs-consumer": "^3.6.0",
     "sqs-producer": "^1.5.0"
   },
   "peerDependencies": {
     "parse-server": "2.4.0"
   },
   "devDependencies": {
-    "eslint": "^4.4.1",
-    "eslint-config-airbnb": "^14.1.0",
-    "eslint-plugin-import": "^2.2.0",
-    "eslint-plugin-jsx-a11y": "^4.0.0",
-    "eslint-plugin-react": "^7.0.0",
+    "eslint": "^4.3.0",
+    "eslint-config-airbnb-base": "^11.3.1",
+    "eslint-plugin-import": "^2.7.0",
     "istanbul": "^0.4.5",
-    "jasmine": "^2.5.2",
-    "sinon": "^3.0.0"
+    "jasmine": "^2.7.0",
+    "sinon": "^3.1.0"
   },
   "repository": {
     "type": "git",
-    "url": "github.com/parse-server-modules/parse-server-sqs-mq-adapter.git"
+    "url": "git+https://github.com/parse-server-modules/parse-server-sqs-mq-adapter.git"
   }
 }
