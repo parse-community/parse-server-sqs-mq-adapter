@@ -1,8 +1,7 @@
 const sinon = require('sinon');
-const MessageQueue = require(
-  '../node_modules/parse-server/lib/ParseMessageQueue').ParseMessageQueue;
-const SQSEventEmitterMQ = require('../').SQSEventEmitterMQ;
-const logger = require('parse-server').logger;
+const { ParseMessageQueue } = require('../node_modules/parse-server/lib/ParseMessageQueue');
+const { SQSEventEmitterMQ } = require('../');
+const { logger } = require('parse-server');
 
 let config;
 
@@ -34,8 +33,8 @@ describe('SMSEventEmitterMQ', () => {
     const CHANNEL = 'foo';
     const MESSAGE = 'hi';
 
-    const subscriber = MessageQueue.createSubscriber(config);
-    const publisher = MessageQueue.createPublisher(config);
+    const subscriber = ParseMessageQueue.createSubscriber(config);
+    const publisher = ParseMessageQueue.createPublisher(config);
 
     subscriber.subscribe(CHANNEL);
     subscriber.on('message', (channel, message) => {
@@ -50,9 +49,9 @@ describe('SMSEventEmitterMQ', () => {
 
   describe('subscriber', () => {
     it('should only have one subscription map', () => {
-      const subscriber1 = MessageQueue.createSubscriber(config);
+      const subscriber1 = ParseMessageQueue.createSubscriber(config);
       subscriber1.subscribe('foo');
-      const subscriber2 = MessageQueue.createSubscriber(config);
+      const subscriber2 = ParseMessageQueue.createSubscriber(config);
       subscriber2.subscribe('bar');
       // subscribe twice for coverage sake!
       subscriber2.subscribe('bar');
@@ -60,17 +59,17 @@ describe('SMSEventEmitterMQ', () => {
     });
 
     it('should throw if no config', () => {
-      expect(() => MessageQueue.createSubscriber({ messageQueueAdapter: SQSEventEmitterMQ }))
+      expect(() => ParseMessageQueue.createSubscriber({ messageQueueAdapter: SQSEventEmitterMQ }))
         .toThrow(new Error('No queueUrl found in config'));
     });
 
     it('should allow unsubscribe', () => {
-      const subscriber = MessageQueue.createSubscriber(config);
+      const subscriber = ParseMessageQueue.createSubscriber(config);
       expect(() => subscriber.unsubscribe('foo')).not.toThrow();
     });
 
     it('calls the handleMessage function when a message is received', (done) => {
-      const subscriber = MessageQueue.createSubscriber(config);
+      const subscriber = ParseMessageQueue.createSubscriber(config);
       subscriber.subscribe('message_processed');
       subscriber.on('message', (event, message) => {
         expect(event).toBe('message_processed');
@@ -82,21 +81,21 @@ describe('SMSEventEmitterMQ', () => {
 
   describe('publisher', () => {
     it('should throw if no config', () => {
-      expect(() => MessageQueue.createPublisher({ messageQueueAdapter: SQSEventEmitterMQ }))
+      expect(() => ParseMessageQueue.createPublisher({ messageQueueAdapter: SQSEventEmitterMQ }))
         .toThrow(new Error('Missing SQS consumer option [queueUrl].'));
     });
 
     it('should handle happy path', () => {
-      expect(() => MessageQueue.createPublisher(config)).not.toThrow();
+      expect(() => ParseMessageQueue.createPublisher(config)).not.toThrow();
     });
 
     it('should publish', () => {
-      const publisher = MessageQueue.createPublisher(config);
+      const publisher = ParseMessageQueue.createPublisher(config);
       expect(() => publisher.publish('foo', 'bar')).not.toThrow();
     });
 
     it('should error', () => {
-      const publisher = MessageQueue.createPublisher(config);
+      const publisher = ParseMessageQueue.createPublisher(config);
       spyOn(logger, 'error');
       publisher.publish();
       const expectedError = new Error("Object messages must have 'id' and 'body' props");
@@ -104,7 +103,7 @@ describe('SMSEventEmitterMQ', () => {
     });
 
     it('should process a batch', () => {
-      const publisher = MessageQueue.createPublisher(config);
+      const publisher = ParseMessageQueue.createPublisher(config);
       spyOn(publisher.emitter, 'send');
       publisher.publish('channel', ['foo', 'bar']);
       const payload = [
