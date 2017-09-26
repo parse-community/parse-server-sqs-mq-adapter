@@ -1,7 +1,7 @@
 {
   "name": "parse-server-sqs-mq-adapter",
   "version": "1.0.5",
-  "description": "Spread work queue accross cluster of parse servers using SQS",
+  "description": "Spread work queue across cluster of parse servers using SQS",
   "main": "index.js",
   "scripts": {
     "lint": "eslint ./index.js ./lib/** ./spec/**",
@@ -16,7 +16,7 @@
     "sqs-producer": "^1.5.0"
   },
   "peerDependencies": {
-    "parse-server": "2.4.0"
+    "parse-server": "2.*"
   },
   "devDependencies": {
     "eslint": "^4.3.0",
