@@ -82,7 +82,7 @@ describe('SMSEventEmitterMQ', () => {
   describe('publisher', () => {
     it('should throw if no config', () => {
       expect(() => ParseMessageQueue.createPublisher({ messageQueueAdapter: SQSEventEmitterMQ }))
-        .toThrow(new Error('Missing SQS consumer option [queueUrl].'));
+        .toThrow(new Error('Missing SQS producer option [queueUrl].'));
     });
 
     it('should handle happy path', () => {
@@ -98,7 +98,7 @@ describe('SMSEventEmitterMQ', () => {
       const publisher = ParseMessageQueue.createPublisher(config);
       spyOn(logger, 'error');
       publisher.publish();
-      const expectedError = new Error("Object messages must have 'id' and 'body' props");
+      const expectedError = new Error("Object messages must have 'body' prop");
       expect(logger.error).toHaveBeenCalledWith(expectedError);
     });
 
