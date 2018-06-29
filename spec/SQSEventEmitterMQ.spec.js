@@ -107,6 +107,17 @@ describe('SMSEventEmitterMQ', () => {
       spyOn(publisher.emitter, 'send');
       publisher.publish('channel', ['foo', 'bar']);
       const payload = [
+        { id: '0', body: 'foo', groupId: 'channel' },
+        { id: '1', body: 'bar', groupId: 'channel' },
+      ];
+      expect(publisher.emitter.send).toHaveBeenCalledWith(payload, jasmine.any(Function));
+    });
+
+    it('should process a batch with no channel', () => {
+      const publisher = ParseMessageQueue.createPublisher(config);
+      spyOn(publisher.emitter, 'send');
+      publisher.publish(undefined, ['foo', 'bar']);
+      const payload = [
         { id: '0', body: 'foo' },
         { id: '1', body: 'bar' },
       ];
