@@ -82,7 +82,7 @@ describe('SMSEventEmitterMQ', () => {
   describe('publisher', () => {
     it('should throw if no config', () => {
       expect(() => ParseMessageQueue.createPublisher({ messageQueueAdapter: SQSEventEmitterMQ }))
-        .toThrow(new Error('Missing SQS consumer option [queueUrl].'));
+        .toThrow(new Error('Missing SQS producer option [queueUrl].'));
     });
 
     it('should handle happy path', () => {
@@ -98,7 +98,7 @@ describe('SMSEventEmitterMQ', () => {
       const publisher = ParseMessageQueue.createPublisher(config);
       spyOn(logger, 'error');
       publisher.publish();
-      const expectedError = new Error("Object messages must have 'id' and 'body' props");
+      const expectedError = new Error("Object messages must have 'body' prop");
       expect(logger.error).toHaveBeenCalledWith(expectedError);
     });
 
@@ -106,6 +106,17 @@ describe('SMSEventEmitterMQ', () => {
       const publisher = ParseMessageQueue.createPublisher(config);
       spyOn(publisher.emitter, 'send');
       publisher.publish('channel', ['foo', 'bar']);
+      const payload = [
+        { id: '0', body: 'foo', groupId: 'channel' },
+        { id: '1', body: 'bar', groupId: 'channel' },
+      ];
+      expect(publisher.emitter.send).toHaveBeenCalledWith(payload, jasmine.any(Function));
+    });
+
+    it('should process a batch with no channel', () => {
+      const publisher = ParseMessageQueue.createPublisher(config);
+      spyOn(publisher.emitter, 'send');
+      publisher.publish(undefined, ['foo', 'bar']);
       const payload = [
         { id: '0', body: 'foo' },
         { id: '1', body: 'bar' },

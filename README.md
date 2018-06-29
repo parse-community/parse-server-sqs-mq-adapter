@@ -1,20 +1,20 @@
 # parse-server-sqs-mq-adapter
 
-[![Build Status](https://travis-ci.org/parse-server-modules/parse-server-sqs-mq-adapter.svg?branch=master)](https://travis-ci.org/parse-server-modules/parse-server-sqs-mq-adapter)
-[![codecov](https://codecov.io/gh/parse-server-modules/parse-server-sqs-mq-adapter/branch/master/graph/badge.svg)](https://codecov.io/gh/parse-server-modules/parse-server-sqs-mq-adapter)
-[![Greenkeeper badge](https://badges.greenkeeper.io/parse-server-modules/parse-server-sqs-mq-adapter.svg)](https://greenkeeper.io/)
+[![Build Status](https://travis-ci.org/parse-community/parse-server-sqs-mq-adapter.svg?branch=master)](https://travis-ci.org/parse-community/parse-server-sqs-mq-adapter)
+[![codecov](https://codecov.io/gh/parse-community/parse-server-sqs-mq-adapter/branch/master/graph/badge.svg)](https://codecov.io/gh/parse-community/parse-server-sqs-mq-adapter)
+[![Greenkeeper badge](https://badges.greenkeeper.io/parse-community/parse-server-sqs-mq-adapter.svg)](https://greenkeeper.io/)
 
 AWS SQS backed message queue.  This adapter allows a work queue to be spread across a cluster of machines.
 
 ## Installation
 
-`npm install --save parse-server-sqs-mq-adapter`
+`npm install --save @parse/sqs-mq-adapter`
 
 ## Usage
 
 ```js
 const ParseServer = require('parse-server').ParseServer;
-const SQSEventEmitterMQ = require('parse-server-sqs-mq-adapter').SQSEventEmitterMQ;
+const SQSEventEmitterMQ = require('@parse/sqs-mq-adapter').SQSEventEmitterMQ;
 
 config = {
   ....
@@ -43,7 +43,7 @@ If you need to specify your credentials manually, you can use a pre-configured i
 
 ```js
 const ParseServer = require('parse-server').ParseServer;
-const SQSEventEmitterMQ = require('SQSEventEmitterMQ');
+const SQSEventEmitterMQ = require('@parse/sqs-mq-adapter').SQSEventEmitterMQ;
 const AWS = require('aws-sdk');
 
 AWS.config.update({
