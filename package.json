@@ -12,7 +12,7 @@
   "author": "Arthur Cinader <acinader@gmail.com>",
   "license": "MIT",
   "dependencies": {
-    "sqs-consumer": "^3.6.0",
+    "sqs-consumer": "^4.0.0",
     "sqs-producer": "^1.6.3"
   },
   "peerDependencies": {
