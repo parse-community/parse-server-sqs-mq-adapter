@@ -10,6 +10,7 @@ assignees: ''
 ### New Issue Checklist
 <!--
     Check every following box [x] before submitting your issue.
+    Click the "Preview" tab for better readability.
     Thanks for contributing to Parse Platform!
 -->
 
