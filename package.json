@@ -3,31 +3,39 @@
   "version": "1.3.3",
   "description": "Spread work queue across cluster of parse servers using SQS",
   "main": "index.js",
-  "scripts": {
-    "lint": "eslint ./index.js ./lib/** ./spec/**",
-    "pretest": "npm run lint",
-    "test": "npm run freetest",
-    "freetest": "istanbul cover -x \"**/spec/**\" jasmine"
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/parse-server-modules/parse-server-sqs-mq-adapter.git"
   },
-  "author": "Arthur Cinader <acinader@gmail.com>",
+  "author": "Parse Platform",
   "license": "MIT",
   "dependencies": {
-    "sqs-consumer": "^3.6.0",
-    "sqs-producer": "^1.6.3"
+    "sqs-consumer": "3.8.0",
+    "sqs-producer": "1.6.3"
   },
   "peerDependencies": {
     "parse-server": "*"
   },
   "devDependencies": {
-    "eslint": "^4.3.0",
-    "eslint-config-airbnb-base": "^12.0.0",
-    "eslint-plugin-import": "^2.7.0",
-    "istanbul": "^0.4.5",
-    "jasmine": "^2.7.0",
-    "sinon": "^4.0.0"
+    "@semantic-release/changelog": "5.0.1",
+    "@semantic-release/commit-analyzer": "8.0.1",
+    "@semantic-release/git": "9.0.0",
+    "@semantic-release/github": "7.2.3",
+    "@semantic-release/npm": "7.1.3",
+    "@semantic-release/release-notes-generator": "9.0.3",
+    "eslint": "4.19.1",
+    "eslint-config-airbnb-base": "12.1.0",
+    "eslint-plugin-import": "2.26.0",
+    "jasmine": "2.99.0",
+    "nyc": "15.1.0",
+    "parse-server": "5.2.1",
+    "semantic-release": "17.4.6",
+    "sinon": "14.0.0"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/parse-server-modules/parse-server-sqs-mq-adapter.git"
+  "scripts": {
+    "lint": "eslint ./index.js ./lib/** ./spec/**",
+    "pretest": "npm run lint",
+    "test": "jasmine",
+    "coverage": "nyc jasmine"
   }
 }
