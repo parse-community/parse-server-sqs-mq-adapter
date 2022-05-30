@@ -1,11 +1,21 @@
-# parse-server-sqs-mq-adapter
+# Parse Server SQS Message Queue Adapter <!-- omit in toc -->
 
-[![Build Status](https://travis-ci.org/parse-community/parse-server-sqs-mq-adapter.svg?branch=master)](https://travis-ci.org/parse-community/parse-server-sqs-mq-adapter)
-[![codecov](https://codecov.io/gh/parse-community/parse-server-sqs-mq-adapter/branch/master/graph/badge.svg)](https://codecov.io/gh/parse-community/parse-server-sqs-mq-adapter)
-[![Greenkeeper badge](https://badges.greenkeeper.io/parse-community/parse-server-sqs-mq-adapter.svg)](https://greenkeeper.io/)
+[![Build Status](https://github.com/parse-community/parse-server-sqs-mq-adapter/workflows/ci/badge.svg?branch=main)](https://github.com/parse-community/parse-server-sqs-mq-adapter/actions?query=workflow%3Aci+branch%3Amain)
+[![Snyk Badge](https://snyk.io/test/github/parse-community/parse-server-sqs-mq-adapter/badge.svg)](https://snyk.io/test/github/parse-community/parse-server-sqs-mq-adapter)
+[![Coverage](https://img.shields.io/codecov/c/github/parse-community/parse-server-sqs-mq-adapter/main.svg)](https://codecov.io/github/parse-community/parse-server-sqs-mq-adapter?branch=main)
+[![auto-release](https://img.shields.io/badge/%F0%9F%9A%80-auto--release-9e34eb.svg)](https://github.com/parse-community/parse-server-sqs-mq-adapter/releases)
 
-AWS SQS backed message queue.  This adapter allows a work queue to be spread across a cluster of machines.
+[![npm latest version](https://img.shields.io/npm/v/@parse/gcs-files-adapter.svg)](https://www.npmjs.com/package/@parse/sqs-mq-adapter)
 
+---
+
+The Parse Server AWS SQS Message Queue Adapter. This adapter allows a work queue to be spread across a cluster of machines.
+
+---
+
+- [Installation](#installation)
+- [Usage](#usage)
+  - [Credentials](#credentials)
 ## Installation
 
 `npm install --save @parse/sqs-mq-adapter`
@@ -29,6 +39,7 @@ const parseServer = new ParseServer(config);
 ```
 
 See: [sqs-consumer](https://www.npmjs.com/package/sqs-consumer#options) for complete list of configuration options.
+
 ### Credentials
 
 By default the consumer will look for AWS credentials in the places [specified by the AWS SDK](http://docs.aws.amazon.com/AWSJavaScriptSDK/guide/node-configuring.html#Setting_AWS_Credentials). The simplest option is to export your credentials as environment variables:
@@ -62,5 +73,4 @@ config = {
 };
 
 const parseServer = new ParseServer(config);
-
 ```
