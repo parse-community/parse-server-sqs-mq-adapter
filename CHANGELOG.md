@@ -1,3 +1,10 @@
+## [1.3.7](https://github.com/parse-server-modules/parse-server-sqs-mq-adapter/compare/1.3.6...1.3.7) (2022-12-14)
+
+
+### Bug Fixes
+
+* Security upgrade ajv and eslint ([#56](https://github.com/parse-server-modules/parse-server-sqs-mq-adapter/issues/56)) ([7c18531](https://github.com/parse-server-modules/parse-server-sqs-mq-adapter/commit/7c185313e51dd92ec8a558c2f900532d6351f199))
+
 ## [1.3.6](https://github.com/parse-server-modules/parse-server-sqs-mq-adapter/compare/1.3.5...1.3.6) (2022-12-14)
 
 
