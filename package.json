@@ -28,7 +28,7 @@
     "eslint-plugin-import": "2.26.0",
     "jasmine": "2.99.0",
     "nyc": "15.1.0",
-    "parse-server": "5.5.1",
+    "parse-server": "5.5.2",
     "semantic-release": "21.0.1",
     "sinon": "14.0.0"
   },
