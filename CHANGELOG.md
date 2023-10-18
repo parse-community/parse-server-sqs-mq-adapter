@@ -1,3 +1,10 @@
+## [1.3.8](https://github.com/parse-server-modules/parse-server-sqs-mq-adapter/compare/1.3.7...1.3.8) (2023-10-18)
+
+
+### Bug Fixes
+
+* Security bump @babel/traverse from 7.18.2 to 7.23.2 ([#68](https://github.com/parse-server-modules/parse-server-sqs-mq-adapter/issues/68)) ([74de7d2](https://github.com/parse-server-modules/parse-server-sqs-mq-adapter/commit/74de7d2cd23c6bc4223a062e676e7c5b4b91c12e))
+
 ## [1.3.7](https://github.com/parse-server-modules/parse-server-sqs-mq-adapter/compare/1.3.6...1.3.7) (2022-12-14)
 
 
