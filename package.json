@@ -17,23 +17,14 @@
     "parse-server": "*"
   },
   "devDependencies": {
-    "@semantic-release/changelog": "5.0.1",
-    "@semantic-release/commit-analyzer": "8.0.1",
-    "@semantic-release/git": "9.0.0",
-    "@semantic-release/github": "7.2.3",
-    "@semantic-release/npm": "7.1.3",
-    "@semantic-release/release-notes-generator": "9.0.3",
     "eslint": "8.57.1",
-    "eslint-config-airbnb-base": "12.1.0",
-    "eslint-plugin-import": "2.30.0",
     "jasmine": "2.99.0",
     "nyc": "15.1.0",
     "parse-server": "5.5.6",
-    "semantic-release": "21.0.1",
     "sinon": "14.0.0"
   },
   "scripts": {
-    "lint": "eslint ./index.js ./lib/** ./spec/**",
+    "lint": "eslint ./index.js ./lib/** ./spec/**/*.js",
     "pretest": "npm run lint",
     "test": "jasmine",
     "coverage": "nyc jasmine"
