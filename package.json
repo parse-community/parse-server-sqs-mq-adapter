@@ -33,7 +33,6 @@
   "scripts": {
     "lint": "eslint --cache ./index.js ./lib/** ./spec/**/*.js",
     "lint-fix": "eslint --cache --fix ./index.js ./lib/** ./spec/**/*.js",
-    "pretest": "npm run lint",
     "test": "jasmine",
     "coverage": "nyc jasmine"
   }
