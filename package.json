@@ -5,7 +5,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/parse-server-modules/parse-server-sqs-mq-adapter.git"
+    "url": "git+https://github.com/parse-community/parse-server-sqs-mq-adapter.git"
   },
   "author": "Parse Platform",
   "license": "Apache-2.0",
