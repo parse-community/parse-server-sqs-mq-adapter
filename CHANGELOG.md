@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/parse-community/parse-server-sqs-mq-adapter/compare/1.3.8...1.4.0) (2024-09-26)
+
+
+### Features
+
+* Add support for Node 20 and 22 ([#101](https://github.com/parse-community/parse-server-sqs-mq-adapter/issues/101)) ([d19b0c2](https://github.com/parse-community/parse-server-sqs-mq-adapter/commit/d19b0c2e12d0a5bff48524f8aee1c2d2a232baa9))
+
 ## [1.3.8](https://github.com/parse-server-modules/parse-server-sqs-mq-adapter/compare/1.3.7...1.3.8) (2023-10-18)
 
 
