@@ -3,13 +3,13 @@
  */
 
 // For CommonJS use:
-// const { readFile } = require('fs').promises;
-// const { resolve } = require('path');
+const { readFile } = require('fs').promises;
+const { resolve } = require('path');
 
 // For ES6 modules use:
-import { readFile } from 'fs/promises';
-import { resolve, dirname } from 'path';
-import { fileURLToPath } from 'url';
+// import { readFile } from 'fs/promises';
+// import { resolve, dirname } from 'path';
+// import { fileURLToPath } from 'url';
 
 // Get env vars
 const ref = process.env.GITHUB_REF;
@@ -106,8 +106,8 @@ async function config() {
 async function loadTemplates() {
   for (const template of Object.keys(templates)) {
     // For ES6 modules use:
-    const fileUrl = import.meta.url;
-    const __dirname = dirname(fileURLToPath(fileUrl));
+    // const fileUrl = import.meta.url;
+    // const __dirname = dirname(fileURLToPath(fileUrl));
 
     const filePath = resolve(__dirname, resourcePath, templates[template].file);
     const text = await readFile(filePath, 'utf-8');
@@ -122,7 +122,7 @@ function getReleaseComment() {
 }
 
 // For CommonJS use:
-// module.exports = config();
+module.exports = config();
 
 // For ES6 modules use:
-export default config();
+// export default config();
