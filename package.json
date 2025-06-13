@@ -28,7 +28,7 @@
     "nyc": "15.1.0",
     "parse-server": "5.5.6",
     "semantic-release": "24.2.5",
-    "sinon": "14.0.0"
+    "sinon": "21.0.0"
   },
   "scripts": {
     "lint": "eslint --cache ./index.js ./lib/** ./spec/**/*.js",
