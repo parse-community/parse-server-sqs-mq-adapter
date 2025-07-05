@@ -15,11 +15,18 @@ describe('SMSEventEmitterMQ', () => {
       }],
     };
 
-    const sqs = sinon.mock();
-    sqs.sendMessageBatch = sinon.stub();
-    sqs.receiveMessage = sinon.stub().yieldsAsync(null, response);
-    sqs.receiveMessage.onSecondCall().returns();
-    sqs.deleteMessage = sinon.stub();
+    const sqs = {
+      sendMessageBatch: sinon.stub(),
+      send: sinon.stub()
+    };
+    let call = 0;
+    sqs.send.callsFake(() => {
+      call += 1;
+      if (call === 1) {
+        return Promise.resolve(response);
+      }
+      return Promise.resolve({});
+    });
 
     config = {
       messageQueueAdapter: SQSEventEmitterMQ,

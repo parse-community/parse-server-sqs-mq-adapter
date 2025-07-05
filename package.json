@@ -10,7 +10,8 @@
   "author": "Parse Platform",
   "license": "Apache-2.0",
   "dependencies": {
-    "sqs-consumer": "3.8.0",
+    "@aws-sdk/client-sqs": "^3.723.0",
+    "sqs-consumer": "12.0.0",
     "sqs-producer": "1.6.3"
   },
   "peerDependencies": {
