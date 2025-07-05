@@ -35,5 +35,8 @@
     "lint-fix": "eslint --cache --fix ./index.js ./lib/** ./spec/**/*.js",
     "test": "jasmine",
     "coverage": "nyc jasmine"
+  },
+  "engines": {
+    "node": ">=18.20.4 <19.0.0 || >=20.18.0 <21.0.0 || >=22.12.0 <23.0.0"
   }
 }
