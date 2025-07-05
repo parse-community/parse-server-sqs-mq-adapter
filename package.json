@@ -1,6 +1,6 @@
 {
   "name": "@parse/sqs-mq-adapter",
-  "version": "1.4.0",
+  "version": "2.0.0",
   "description": "Spread work queue across cluster of parse servers using SQS",
   "main": "index.js",
   "repository": {
@@ -23,7 +23,7 @@
     "@semantic-release/github": "11.0.3",
     "@semantic-release/npm": "12.0.1",
     "@semantic-release/release-notes-generator": "14.0.3",
-    "eslint": "8.57.1",
+    "eslint": "9.30.1",
     "jasmine": "2.99.0",
     "nyc": "15.1.0",
     "parse-server": "5.5.6",
@@ -35,5 +35,8 @@
     "lint-fix": "eslint --cache --fix ./index.js ./lib/** ./spec/**/*.js",
     "test": "jasmine",
     "coverage": "nyc jasmine"
+  },
+  "engines": {
+    "node": ">=18.20.4 <19.0.0 || >=20.18.0 <21.0.0 || >=22.12.0 <23.0.0"
   }
 }
