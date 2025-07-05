@@ -1,3 +1,15 @@
+# [2.0.0](https://github.com/parse-community/parse-server-sqs-mq-adapter/compare/1.4.0...2.0.0) (2025-07-05)
+
+
+### Features
+
+* Remove support for Node 12, 14, 15, 16, 17 ([#158](https://github.com/parse-community/parse-server-sqs-mq-adapter/issues/158)) ([26c114e](https://github.com/parse-community/parse-server-sqs-mq-adapter/commit/26c114e77e4d6e64085f513c54899e44fc5c3a61))
+
+
+### BREAKING CHANGES
+
+* Removes support for outdated Node versions 12, 14, 15, 16, 17. ([26c114e](26c114e))
+
 # [1.4.0](https://github.com/parse-community/parse-server-sqs-mq-adapter/compare/1.3.8...1.4.0) (2024-09-26)
 
 
