@@ -13,6 +13,7 @@ const defaultConfig = {
   databaseURI: 'mongodb://127.0.0.1:27017/sqs-mq-adapter',
   appId: 'test',
   masterKey: 'test',
+  maintenanceKey: 'test-maintenance-key',
   serverURL: 'http://127.0.0.1:1327/api/parse',
   port: 1327,
   mountPath: '/api/parse',

@@ -1,21 +1,21 @@
 const { ParseMessageQueue } = require('../node_modules/parse-server/lib/ParseMessageQueue');
 const { getServerConfig } = require('./support/server');
 
-describe_only_parse_server_version('>=7')('Parse Server >=7 integration test', () => {
-  it('publishes a message', done => {
+describe('Parse Server integration', () => {
+  it('publishes a message', async done => {
     const options = getServerConfig().queueOptions;
     const subscriber = ParseMessageQueue.createSubscriber(options);
     const publisher = ParseMessageQueue.createPublisher(options);
-    const CHANNEL = 'foo';
-    const MESSAGE = 'hi';
+    const channel = 'foo';
+    const message = 'hi';
 
-    subscriber.subscribe(CHANNEL);
+    subscriber.subscribe(channel);
     subscriber.on('message', (channel, message) => {
-      expect(channel).toBe(CHANNEL);
-      expect(message).toBe(MESSAGE);
+      expect(channel).toBe(channel);
+      expect(message).toBe(message);
       done();
     });
 
-    publisher.publish(CHANNEL, MESSAGE);
+    publisher.publish(channel, message);
   });
 });
