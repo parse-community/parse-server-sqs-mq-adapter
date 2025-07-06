@@ -17,6 +17,7 @@ The Parse Server AWS SQS Message Queue Adapter integrates Amazon SQS as the unde
 - [Usage](#usage)
   - [Integrate with Parse Server](#integrate-with-parse-server)
   - [Credentials](#credentials)
+  - [Push Notifications](#push-notifications)
 ## Installation
 
 `npm install --save @parse/sqs-mq-adapter`
@@ -38,6 +39,7 @@ config = {
 
 const parseServer = new ParseServer(config);
 ```
+
 
 ### Integrate with Parse Server
 
@@ -106,3 +108,28 @@ config = {
 
 const parseServer = new ParseServer(config);
 ```
+
+### Push Notifications
+
+When using SQS to share the push queue across instances, disable the built-in push worker so only the adapter processes pushes from the queue.
+
+```js
+const { ParseServer } = require('parse-server');
+const { SQSEventEmitterMQ } = require('@parse/sqs-mq-adapter');
+
+const config = {
+  push: {
+    adapter: new MyPushAdapter(),
+    queueOptions: {
+      messageQueueAdapter: SQSEventEmitterMQ,
+      queueUrl: 'https://sqs.us-east-1.amazonaws.com/XXX/Push-Queue',
+      region: 'us-east-1',
+      disablePushWorker: true,
+    },
+  },
+};
+
+const server = new ParseServer(config);
+```
+
+Setting \`disablePushWorker: true\` ensures Parse Server enqueues push notifications while a single worker reads them from the queue via this adapter.
