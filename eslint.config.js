@@ -15,18 +15,22 @@ export default [
       }
     },
     rules: {
-      indent: ['error', 2, { SwitchCase: 1 }],
-      'linebreak-style': ['error', 'unix'],
-      'no-trailing-spaces': 2,
-      'eol-last': 2,
-      'space-in-parens': ['error', 'never'],
-      'no-multiple-empty-lines': 1,
-      'prefer-const': 'error',
-      'space-infix-ops': 'error',
-      'no-useless-escape': 'off',
-      'require-atomic-updates': 'off',
-      'object-curly-spacing': ['error', 'always']
-    }
+      indent: ["error", 2, { SwitchCase: 1 }],
+      "linebreak-style": ["error", "unix"],
+      "no-trailing-spaces": "error",
+      "eol-last": "error",
+      "space-in-parens": ["error", "never"],
+      "no-multiple-empty-lines": "warn",
+      "prefer-const": "error",
+      "space-infix-ops": "error",
+      "no-useless-escape": "off",
+      "require-atomic-updates": "off",
+      "object-curly-spacing": ["error", "always"],
+      curly: ["error", "all"],
+      "block-spacing": ["error", "always"],
+      "no-unused-vars": "off",
+      "no-console": "warn"
+    },
   },
   {
     files: ['spec/**/*.js'],
