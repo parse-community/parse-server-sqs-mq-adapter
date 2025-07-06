@@ -111,7 +111,9 @@ const parseServer = new ParseServer(config);
 
 ### Push Notifications
 
-When using SQS to share the push queue across instances, disable the built-in push worker so only the adapter processes pushes from the queue.
+Parse Server sends push notifications as part of its workload using an internal push queue. When sending large amounts of push notifications this may impact other workload. This adapter allows Parse Server to only enqueue push notifications into a shared push queue so that another, dedicated Parse Server instance can process the push queue and send the push notification to the push service provider.
+
+The Parse Server instance that should only enqueue pushes must have set `disablePushWorker: true`. The Parse Server instance that should process and send the enqueued pushes must omit this option, or set `disablePushWorker: false`.
 
 ```js
 const { ParseServer } = require('parse-server');
@@ -132,4 +134,4 @@ const config = {
 const server = new ParseServer(config);
 ```
 
-Setting \`disablePushWorker: true\` ensures Parse Server enqueues push notifications while a single worker reads them from the queue via this adapter.
+This works for any instance constellation, with one or multiple instances enqueuing pushes and one or multiple instances sending pushes.
