@@ -40,7 +40,7 @@ async function startServer(config = {}) {
       .once('listening', resolve)
       .once('error', (e) => reject(e));
   }).catch((e) => {
-    console.log(`parse-server failed to launch with error: ${e}`);
+    throw new Error(`parse-server failed to launch with error: ${e}`);
   });
 
   Object.assign(serverState, {
