@@ -9,12 +9,13 @@
 
 ---
 
-The Parse Server AWS SQS Message Queue Adapter. This adapter allows a work queue to be spread across a cluster of machines.
+The Parse Server AWS SQS Message Queue Adapter integrates Amazon SQS as the underlying message queue for Parse Server. It allows jobs and live query events to be distributed across multiple Parse Server instances.
 
 ---
 
 - [Installation](#installation)
 - [Usage](#usage)
+  - [Integrate with Parse Server](#integrate-with-parse-server)
   - [Credentials](#credentials)
 ## Installation
 
@@ -37,6 +38,37 @@ config = {
 
 const parseServer = new ParseServer(config);
 ```
+
+### Integrate with Parse Server
+
+1. **Install dependencies**
+
+   ```bash
+   npm install parse-server @parse/sqs-mq-adapter
+   ```
+
+2. **Configure the adapter** in your Parse Server configuration:
+
+   ```js
+   const { ParseServer } = require('parse-server');
+   const { SQSEventEmitterMQ } = require('@parse/sqs-mq-adapter');
+
+   const config = {
+     databaseURI: 'mongodb://localhost:27017/app',
+     appId: 'myAppId',
+     masterKey: 'myMasterKey',
+     serverURL: 'https://example.com/parse',
+     queueOptions: {
+       messageQueueAdapter: SQSEventEmitterMQ,
+       queueUrl: 'https://sqs.us-east-1.amazonaws.com/XXX/Parse-Queue',
+       region: 'us-east-1',
+     },
+   };
+
+   const server = new ParseServer(config);
+   ```
+
+3. **Start Parse Server** and the adapter will listen to the configured SQS queue.
 
 See: [sqs-consumer](https://www.npmjs.com/package/sqs-consumer#options) for complete list of configuration options.
 
