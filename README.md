@@ -9,13 +9,15 @@
 
 ---
 
-The Parse Server AWS SQS Message Queue Adapter. This adapter allows a work queue to be spread across a cluster of machines.
+The Parse Server AWS SQS Message Queue Adapter integrates Amazon SQS as the underlying message queue for Parse Server. It allows jobs and live query events to be distributed across multiple Parse Server instances.
 
 ---
 
 - [Installation](#installation)
 - [Usage](#usage)
+  - [Integrate with Parse Server](#integrate-with-parse-server)
   - [Credentials](#credentials)
+  - [Push Notifications](#push-notifications)
 ## Installation
 
 `npm install --save @parse/sqs-mq-adapter`
@@ -37,6 +39,38 @@ config = {
 
 const parseServer = new ParseServer(config);
 ```
+
+
+### Integrate with Parse Server
+
+1. **Install dependencies**
+
+   ```bash
+   npm install parse-server @parse/sqs-mq-adapter
+   ```
+
+2. **Configure the adapter** in your Parse Server configuration:
+
+   ```js
+   const { ParseServer } = require('parse-server');
+   const { SQSEventEmitterMQ } = require('@parse/sqs-mq-adapter');
+
+   const config = {
+     databaseURI: 'mongodb://localhost:27017/app',
+     appId: 'myAppId',
+     masterKey: 'myMasterKey',
+     serverURL: 'https://example.com/parse',
+     queueOptions: {
+       messageQueueAdapter: SQSEventEmitterMQ,
+       queueUrl: 'https://sqs.us-east-1.amazonaws.com/XXX/Parse-Queue',
+       region: 'us-east-1',
+     },
+   };
+
+   const server = new ParseServer(config);
+   ```
+
+3. **Start Parse Server** and the adapter will listen to the configured SQS queue.
 
 See: [sqs-consumer](https://www.npmjs.com/package/sqs-consumer#options) for complete list of configuration options.
 
@@ -74,3 +108,30 @@ config = {
 
 const parseServer = new ParseServer(config);
 ```
+
+### Push Notifications
+
+Parse Server sends push notifications as part of its workload using an internal push queue. When sending large amounts of push notifications this may impact other workload. This adapter allows Parse Server to only enqueue push notifications into a shared push queue so that another, dedicated Parse Server instance can process the push queue and send the push notification to the push service provider.
+
+The Parse Server instance that should only enqueue pushes must have set `disablePushWorker: true`. The Parse Server instance that should process and send the enqueued pushes must omit this option, or set `disablePushWorker: false`.
+
+```js
+const { ParseServer } = require('parse-server');
+const { SQSEventEmitterMQ } = require('@parse/sqs-mq-adapter');
+
+const config = {
+  push: {
+    adapter: new MyPushAdapter(),
+    queueOptions: {
+      messageQueueAdapter: SQSEventEmitterMQ,
+      queueUrl: 'https://sqs.us-east-1.amazonaws.com/XXX/Push-Queue',
+      region: 'us-east-1',
+      disablePushWorker: true,
+    },
+  },
+};
+
+const server = new ParseServer(config);
+```
+
+This works for any instance constellation, with one or multiple instances enqueuing pushes and one or multiple instances sending pushes.
