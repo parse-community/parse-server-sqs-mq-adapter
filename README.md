@@ -9,7 +9,7 @@
 
 ---
 
-The Parse Server AWS SQS Message Queue Adapter integrates Amazon SQS as the underlying message queue for Parse Server. It allows jobs and live query events to be distributed across multiple Parse Server instances.
+The Parse Server AWS SQS Message Queue Adapter integrates Amazon SQS as the underlying message queue for Parse Server. It allows push notifications, jobs and LiveQuery events to be distributed across multiple Parse Server instances.
 
 ---
 
