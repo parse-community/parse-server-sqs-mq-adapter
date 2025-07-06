@@ -14,7 +14,7 @@
     "@eslint/js": "9.30.1",
     "globals": "16.3.0",
     "sqs-consumer": "12.0.0",
-    "sqs-producer": "1.6.3"
+    "sqs-producer": "7.0.0"
   },
   "peerDependencies": {
     "parse-server": "*"
