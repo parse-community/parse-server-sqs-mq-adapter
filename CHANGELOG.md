@@ -1,3 +1,10 @@
+# [2.1.0](https://github.com/parse-community/parse-server-sqs-mq-adapter/compare/2.0.0...2.1.0) (2025-07-06)
+
+
+### Features
+
+* Add official support for Parse Server 7 and 8 ([#162](https://github.com/parse-community/parse-server-sqs-mq-adapter/issues/162)) ([e7e76b3](https://github.com/parse-community/parse-server-sqs-mq-adapter/commit/e7e76b3db52cc29964db1be33c08298fe166f9b6))
+
 # [2.0.0](https://github.com/parse-community/parse-server-sqs-mq-adapter/compare/1.4.0...2.0.0) (2025-07-05)
 
 
