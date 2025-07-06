@@ -2,5 +2,12 @@
   "spec_dir": "spec",
   "spec_files": [
     "**/*[sS]pec.js"
-  ]
+  ],
+  "helpers": [
+    "support/helper.js",
+    "support/jasmine.js",
+    "support/reporter.js"
+  ],
+  "stopSpecOnExpectationFailure": false,
+  "random": true
 }

@@ -1,58 +1,36 @@
-const sinon = require('sinon');
 const { ParseMessageQueue } = require('../node_modules/parse-server/lib/ParseMessageQueue');
 const { SQSEventEmitterMQ } = require('../');
 const { logger } = require('parse-server');
+const { getServerConfig } = require('./support/server.js');
+const { getMockSqsOptions } = require('./mocks/sqs.js');
 
 let config;
 
 describe('SMSEventEmitterMQ', () => {
   beforeEach(() => {
-    const response = {
-      Messages: [{
-        ReceiptHandle: 'receipt-handle',
-        MessageId: '123',
-        Body: 'body',
-      }],
-    };
-
-    const sqs = {
-      sendMessageBatch: sinon.stub(),
-      send: sinon.stub()
-    };
-    let call = 0;
-    sqs.send.callsFake(() => {
-      call += 1;
-      if (call === 1) {
-        return Promise.resolve(response);
-      }
-      return Promise.resolve({});
-    });
-
-    config = {
-      messageQueueAdapter: SQSEventEmitterMQ,
-      queueUrl: 'test-queue',
-      region: 'mock',
-      sqs,
-    };
+    config = getMockSqsOptions();
   });
 
-  xit('a test for real that can be done against a live queue', (done) => {
-    const CHANNEL = 'foo';
-    const MESSAGE = 'hi';
+  describe('integration', () => {
+    it('publishes a message', done => {
+      const options = getServerConfig().queueOptions;
+      const subscriber = ParseMessageQueue.createSubscriber(options);
+      const publisher = ParseMessageQueue.createPublisher(options);
+      const channel = 'foo';
+      const message = 'hi';
 
-    const subscriber = ParseMessageQueue.createSubscriber(config);
-    const publisher = ParseMessageQueue.createPublisher(config);
+      subscriber.subscribe(channel);
+      subscriber.on('message', (channel, message) => {
+        expect(channel).toBe(channel);
+        expect(message).toBe(message);
 
-    subscriber.subscribe(CHANNEL);
-    subscriber.on('message', (channel, message) => {
-      expect(channel).toBe(CHANNEL);
-      expect(message).toBe(MESSAGE);
-      // need to give the aws-sdk some time to mark the message
-      setTimeout(done, 500);
+        // Give aws-sdk some time to mark the message to avoid flaky test
+        setTimeout(done, 200);
+      });
+
+      publisher.publish(channel, message);
     });
-
-    publisher.publish(CHANNEL, MESSAGE);
-  }).pend('configure options for a real sqs endpoint');
+  });
 
   describe('subscriber', () => {
     it('should only have one subscription map', () => {
@@ -80,7 +58,7 @@ describe('SMSEventEmitterMQ', () => {
       subscriber.subscribe('message_processed');
       subscriber.on('message', (event, message) => {
         expect(event).toBe('message_processed');
-        expect(message).toBe('body');
+        expect(message).toBe('hi');
         done();
       });
     });
