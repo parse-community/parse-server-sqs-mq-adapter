@@ -117,7 +117,7 @@ describe('SMSEventEmitterMQ', () => {
         { id: '0', body: 'foo', groupId: 'channel' },
         { id: '1', body: 'bar', groupId: 'channel' },
       ];
-      expect(publisher.emitter.send).toHaveBeenCalledWith(payload, jasmine.any(Function));
+      expect(publisher.emitter.send).toHaveBeenCalledWith(payload);
     });
 
     it('should process a batch with no channel', () => {
@@ -128,7 +128,7 @@ describe('SMSEventEmitterMQ', () => {
         { id: '0', body: 'foo' },
         { id: '1', body: 'bar' },
       ];
-      expect(publisher.emitter.send).toHaveBeenCalledWith(payload, jasmine.any(Function));
+      expect(publisher.emitter.send).toHaveBeenCalledWith(payload);
     });
   });
 });
