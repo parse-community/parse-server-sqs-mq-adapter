@@ -28,6 +28,8 @@
     "@semantic-release/release-notes-generator": "14.0.3",
     "eslint": "9.30.1",
     "jasmine": "2.99.0",
+    "jasmine-spec-reporter": "7.0.0",
+    "mongodb-runner": "5.9.2",
     "nyc": "15.1.0",
     "parse-server": "8.2.1",
     "semantic-release": "24.2.5",
@@ -36,7 +38,12 @@
   "scripts": {
     "lint": "eslint --cache ./index.js ./lib/** ./spec/**/*.js",
     "lint-fix": "eslint --cache --fix ./index.js ./lib/** ./spec/**/*.js",
-    "test": "jasmine",
+    "pretest": "npm run test:mongodb:runnerstart",
+    "posttest": "npm run test:mongodb:runnerstop",
+    "test": "npm run test:only",
+    "test:only": "TESTING=1 nyc jasmine",
+    "test:mongodb:runnerstart": "mongodb-runner start -t standalone -- --port 27017",
+    "test:mongodb:runnerstop": "mongodb-runner stop --all",
     "coverage": "nyc jasmine"
   },
   "engines": {
