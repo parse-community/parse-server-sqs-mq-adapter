@@ -111,7 +111,7 @@ const parseServer = new ParseServer(config);
 
 ### Push Notifications
 
-Parse Server sends push notifications as part of its workload using an internal push queue. When sending large amounts of push notifications this may impact other workload. This adapter allows Parse Server to only enqueue push notifications into a shared push queue so that another, dedicated Parse Server instance can process the push queue and send the push notification to the push service provider.
+Parse Server sends push notifications as part of its workload using an internal push queue. When sending large amounts of push notifications this may impact other parts of the workload. This adapter allows Parse Server to only enqueue push notifications into a shared push queue so that another, dedicated Parse Server instance can process the push queue and send the push notification to the push service provider.
 
 The Parse Server instance that should only enqueue pushes must have set `disablePushWorker: true`. The Parse Server instance that should process and send the enqueued pushes must omit this option, or set `disablePushWorker: false`.
 
