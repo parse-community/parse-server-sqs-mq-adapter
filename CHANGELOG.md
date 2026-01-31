@@ -1,3 +1,10 @@
+## [2.1.1](https://github.com/parse-community/parse-server-sqs-mq-adapter/compare/2.1.0...2.1.1) (2026-01-31)
+
+
+### Bug Fixes
+
+* Security upgrade qs from 6.14.0 to 6.14.1 ([#268](https://github.com/parse-community/parse-server-sqs-mq-adapter/issues/268)) ([a6cf866](https://github.com/parse-community/parse-server-sqs-mq-adapter/commit/a6cf866f76864aea4fabe3f758800c969da4c9b8))
+
 # [2.1.0](https://github.com/parse-community/parse-server-sqs-mq-adapter/compare/2.0.0...2.1.0) (2025-07-06)
 
 
