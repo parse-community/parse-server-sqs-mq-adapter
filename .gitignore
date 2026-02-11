@@ -39,3 +39,4 @@ jspm_packages
 
 test_logs/*
 .eslintcache
+/.claude

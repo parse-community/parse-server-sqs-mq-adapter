@@ -1,3 +1,10 @@
+# [2.2.0](https://github.com/parse-community/parse-server-sqs-mq-adapter/compare/2.1.1...2.2.0) (2026-02-11)
+
+
+### Features
+
+* Upgrade sqs-consumer from 12.0.0 to 14.2.1 ([#285](https://github.com/parse-community/parse-server-sqs-mq-adapter/issues/285)) ([ae6955e](https://github.com/parse-community/parse-server-sqs-mq-adapter/commit/ae6955eacbfdd8bb9609269bcd84417a55c3e823))
+
 ## [2.1.1](https://github.com/parse-community/parse-server-sqs-mq-adapter/compare/2.1.0...2.1.1) (2026-01-31)
 
 
