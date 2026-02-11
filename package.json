@@ -12,7 +12,7 @@
   "dependencies": {
     "@aws-sdk/client-sqs": "3.986.0",
     "sqs-consumer": "14.2.1",
-    "sqs-producer": "7.0.0"
+    "sqs-producer": "8.0.3"
   },
   "peerDependencies": {
     "parse-server": "*"
