@@ -1,3 +1,10 @@
+# [2.3.0](https://github.com/parse-community/parse-server-sqs-mq-adapter/compare/2.2.0...2.3.0) (2026-02-11)
+
+
+### Features
+
+* Upgrade sqs-producer from 7.0.0 to 8.0.3 ([#282](https://github.com/parse-community/parse-server-sqs-mq-adapter/issues/282)) ([b887c58](https://github.com/parse-community/parse-server-sqs-mq-adapter/commit/b887c58fcb84c3ce5c91204078635cabf9ac25cc))
+
 # [2.2.0](https://github.com/parse-community/parse-server-sqs-mq-adapter/compare/2.1.1...2.2.0) (2026-02-11)
 
 
