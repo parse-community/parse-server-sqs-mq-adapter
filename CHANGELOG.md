@@ -1,3 +1,15 @@
+# [3.0.0](https://github.com/parse-community/parse-server-sqs-mq-adapter/compare/2.3.0...3.0.0) (2026-03-30)
+
+
+### Features
+
+* Remove support for Node.js 18, Parse Server 7 ([#340](https://github.com/parse-community/parse-server-sqs-mq-adapter/issues/340)) ([66bfc1a](https://github.com/parse-community/parse-server-sqs-mq-adapter/commit/66bfc1a286dc8168f48b3ca0e124f84c425c7a41))
+
+
+### BREAKING CHANGES
+
+* Removes support for Node.js 18, Parse Server 7. ([66bfc1a](66bfc1a))
+
 # [2.3.0](https://github.com/parse-community/parse-server-sqs-mq-adapter/compare/2.2.0...2.3.0) (2026-02-11)
 
 
