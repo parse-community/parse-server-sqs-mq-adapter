@@ -15,7 +15,7 @@
     "sqs-producer": "8.0.3"
   },
   "peerDependencies": {
-    "parse-server": "*"
+    "parse-server": ">=8.0.0"
   },
   "devDependencies": {
     "@eslint/js": "9.39.2",
