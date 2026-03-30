@@ -15,7 +15,7 @@
     "sqs-producer": "8.0.3"
   },
   "peerDependencies": {
-    "parse-server": ">=8.0.0 <9.0.0"
+    "parse-server": ">=8.0.0 <10.0.0"
   },
   "devDependencies": {
     "@eslint/js": "9.39.2",
@@ -46,6 +46,6 @@
     "coverage": "nyc jasmine"
   },
   "engines": {
-    "node": ">=20.18.0 <21.0.0 || >=22.12.0 <23.0.0"
+    "node": ">=20.18.0 <21.0.0 || >=22.12.0 <23.0.0 || >=24.0.0 <25.0.0"
   }
 }
