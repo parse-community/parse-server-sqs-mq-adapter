@@ -27,7 +27,7 @@
     "@semantic-release/release-notes-generator": "14.1.0",
     "eslint": "10.2.0",
     "globals": "17.4.0",
-    "jasmine": "6.1.0",
+    "jasmine": "6.2.0",
     "jasmine-spec-reporter": "7.0.0",
     "mongodb-runner": "6.7.3",
     "nyc": "18.0.0",
