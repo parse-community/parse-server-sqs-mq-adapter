@@ -1,3 +1,10 @@
+## [3.1.2](https://github.com/parse-community/parse-server-sqs-mq-adapter/compare/3.1.1...3.1.2) (2026-07-21)
+
+
+### Bug Fixes
+
+* Bump brace-expansion from 5.0.5 to 5.0.7 ([#418](https://github.com/parse-community/parse-server-sqs-mq-adapter/issues/418)) ([af12882](https://github.com/parse-community/parse-server-sqs-mq-adapter/commit/af128827f25fa47d7791bc13fb508f12fbdab771))
+
 ## [3.1.1](https://github.com/parse-community/parse-server-sqs-mq-adapter/compare/3.1.0...3.1.1) (2026-07-21)
 
 
