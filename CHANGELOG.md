@@ -1,3 +1,10 @@
+## [3.1.1](https://github.com/parse-community/parse-server-sqs-mq-adapter/compare/3.1.0...3.1.1) (2026-07-21)
+
+
+### Bug Fixes
+
+* Bump tar and npm ([#412](https://github.com/parse-community/parse-server-sqs-mq-adapter/issues/412)) ([70fe483](https://github.com/parse-community/parse-server-sqs-mq-adapter/commit/70fe483f322d341c20c6bfb59b954bde4c321b4e))
+
 # [3.1.0](https://github.com/parse-community/parse-server-sqs-mq-adapter/compare/3.0.0...3.1.0) (2026-03-30)
 
 
