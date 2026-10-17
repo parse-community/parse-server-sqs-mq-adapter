@@ -32,7 +32,7 @@
     "mongodb-runner": "6.7.3",
     "nyc": "18.0.0",
     "parse-server": "9.10.1",
-    "semantic-release": "25.0.8"
+    "semantic-release": "25.0.9"
   },
   "scripts": {
     "lint": "eslint --cache ./index.js ./lib/** ./spec/**/*.js",
