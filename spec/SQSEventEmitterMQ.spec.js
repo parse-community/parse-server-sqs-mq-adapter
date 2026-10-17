@@ -2,7 +2,7 @@ const { ParseMessageQueue } = require('../node_modules/parse-server/lib/ParseMes
 const { SQSEventEmitterMQ } = require('../');
 const { logger } = require('parse-server');
 const { getServerConfig } = require('./support/server.js');
-const { getMockSqsOptions } = require('./mocks/sqs.js');
+const { getMockSqsOptions, getSdkSqsOptions } = require('./mocks/sqs.js');
 
 let config;
 
@@ -107,6 +107,58 @@ describe('SMSEventEmitterMQ', () => {
         { id: '1', body: 'bar' },
       ];
       expect(publisher.emitter.send).toHaveBeenCalledWith(payload);
+    });
+  });
+
+  describe('with AWS SDK client', () => {
+    it('publishes messages', async () => {
+      const { options, requests } = getSdkSqsOptions();
+      const publisher = ParseMessageQueue.createPublisher(options);
+      const send = spyOn(publisher.emitter, 'send').and.callThrough();
+      publisher.publish('channel', ['foo', 'bar']);
+      const sent = await send.calls.mostRecent().returnValue;
+      expect(requests).toEqual([
+        {
+          operation: 'SendMessageBatch',
+          input: {
+            QueueUrl: options.queueUrl,
+            Entries: [
+              { Id: '0', MessageBody: 'foo', MessageGroupId: 'channel' },
+              { Id: '1', MessageBody: 'bar', MessageGroupId: 'channel' },
+            ],
+          },
+        },
+      ]);
+      expect(sent).toEqual([
+        jasmine.objectContaining({ Id: '0', MessageId: 'message-0' }),
+        jasmine.objectContaining({ Id: '1', MessageId: 'message-1' }),
+      ]);
+    });
+
+    it('receives and deletes a message', async () => {
+      const { options, requests } = getSdkSqsOptions({
+        messages: [{ MessageId: '123', ReceiptHandle: 'receipt-handle', Body: 'hi' }],
+      });
+      const subscriber = ParseMessageQueue.createSubscriber(options);
+      const received = [];
+      subscriber.on('message', (channel, message) => received.push([channel, message]));
+      subscriber.subscribe('sdk-channel');
+      try {
+        await new Promise((resolve, reject) => {
+          subscriber.emitter.once('message_processed', resolve);
+          subscriber.emitter.once('error', reject);
+        });
+      } finally {
+        subscriber.unsubscribe('sdk-channel');
+      }
+      expect(received).toEqual([['sdk-channel', 'hi']]);
+      expect(requests.map(({ operation }) => operation)).toEqual(['ReceiveMessage', 'DeleteMessage']);
+      expect(requests[0].input).toEqual(jasmine.objectContaining({
+        QueueUrl: options.queueUrl,
+        MaxNumberOfMessages: 1,
+        WaitTimeSeconds: 20,
+      }));
+      expect(requests[1].input).toEqual({ QueueUrl: options.queueUrl, ReceiptHandle: 'receipt-handle' });
     });
   });
 });
