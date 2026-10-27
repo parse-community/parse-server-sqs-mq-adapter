@@ -19,6 +19,7 @@
   },
   "devDependencies": {
     "@eslint/js": "10.0.1",
+    "@mongodb-js/mongodb-runner": "8.4.3",
     "@semantic-release/changelog": "7.0.0",
     "@semantic-release/commit-analyzer": "13.0.1",
     "@semantic-release/git": "11.0.1",
@@ -29,7 +30,6 @@
     "globals": "17.13.0",
     "jasmine": "7.0.0",
     "jasmine-spec-reporter": "7.0.0",
-    "mongodb-runner": "6.7.3",
     "nyc": "18.0.0",
     "parse-server": "9.10.1",
     "semantic-release": "25.0.9"
