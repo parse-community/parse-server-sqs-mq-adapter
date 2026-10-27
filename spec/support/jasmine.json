@@ -8,6 +8,8 @@
     "support/jasmine.js",
     "support/reporter.js"
   ],
-  "stopSpecOnExpectationFailure": false,
-  "random": true
+  "env": {
+    "stopSpecOnExpectationFailure": false,
+    "random": true
+  }
 }
